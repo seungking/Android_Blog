@@ -25,6 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.android_blog.AuthActivity;
 import com.android_blog.Constant;
+import com.android_blog.HomeActivity;
 import com.android_blog.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -133,7 +134,7 @@ public class SignInFragment extends Fragment {
 
     //로그인
     private void login (){
-        dialog.setMessage("Logging in");
+        dialog.setMessage("로그인 중");
         dialog.show();
         //volley 클래스에 있는 함수 이용해서 http 연결
         StringRequest request = new StringRequest(Request.Method.POST, Constant.LOGIN, response -> {
@@ -154,8 +155,8 @@ public class SignInFragment extends Fragment {
                     editor.putBoolean("isLoggedIn",true);
                     editor.apply();
                     //성공 시
-//                    startActivity(new Intent(((AuthActivity)getContext()), HomeActivity.class));
-//                    ((AuthActivity) getContext()).finish();
+                    startActivity(new Intent(((AuthActivity)getContext()), HomeActivity.class));
+                    ((AuthActivity) getContext()).finish();
                     Toast.makeText(getContext(), "Login Success", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
