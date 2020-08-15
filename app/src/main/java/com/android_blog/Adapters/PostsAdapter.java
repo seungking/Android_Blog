@@ -24,6 +24,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.android_blog.Constant;
+import com.android_blog.EditPostActivity;
 import com.android_blog.HomeActivity;
 import com.android_blog.Models.Post;
 import com.android_blog.R;
@@ -145,15 +146,15 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
 
                     switch (item.getItemId()){
                         case R.id.item_edit: {
-//                            Intent i = new Intent(((HomeActivity)context), EditPostActivity.class);
-//                            i.putExtra("postId",post.getId());
-//                            i.putExtra("position",position);
-//                            i.putExtra("text",post.getDesc());
-//                            context.startActivity(i);
+                            Intent i = new Intent(((HomeActivity)context), EditPostActivity.class);
+                            i.putExtra("postId",post.getId());
+                            i.putExtra("position",position);
+                            i.putExtra("text",post.getDesc());
+                            context.startActivity(i);
                             return true;
                         }
                         case R.id.item_delete: {
-//                            deletePost(post.getId(),position);
+                            deletePost(post.getId(),position);
                             return true;
                         }
                     }

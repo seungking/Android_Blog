@@ -164,13 +164,38 @@ public class SignUpFragment extends Fragment {
 
     //회원가입 기능
     private void register(){
-        dialog.setMessage("가입 중");
+        dialog.setMessage("Registering");
         dialog.show();
         //volley 클래스에 있는 함수 이용해서 http 연결
-        StringRequest request = new StringRequest(Request.Method.POST, Constant.REGISTER, //연결 성공 시에 리스폰 받음
-                //로컬에 정보 저장
-                //성공 시
-                this::onResponse, error -> {
+        StringRequest request = new StringRequest(Request.Method.POST, Constant.REGISTER, response -> {
+            //연결 성공 시에 리스폰 받음
+            Log.d("log1","register start");
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONObject user = object.getJSONObject("user");
+                    //로컬에 정보 저장
+                    SharedPreferences userPref = getActivity().getApplicationContext().getSharedPreferences("user",getContext().MODE_PRIVATE);
+                    SharedPreferences.Editor editor = userPref.edit();
+                    editor.putString("token",object.getString("token"));
+                    editor.putString("name",user.getString("name"));
+                    editor.putInt("id",user.getInt("id"));
+                    editor.putString("lastname",user.getString("lastname"));
+                    editor.putString("photo",user.getString("photo"));
+                    editor.putBoolean("isLoggedIn",true);
+                    editor.apply();
+                    //성공 시
+                    startActivity(new Intent(((AuthActivity)getContext()), UserInfoActivity.class));
+                    ((AuthActivity) getContext()).finish();
+                    Toast.makeText(getContext(), "Register Success", Toast.LENGTH_SHORT).show();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Log.d("log1","register error");
+            }
+            dialog.dismiss();
+
+        },error -> {
             // error if connection not success
             error.printStackTrace();
             Log.d("log1","register error");
@@ -192,31 +217,4 @@ public class SignUpFragment extends Fragment {
         queue.add(request);
     }
 
-    private void onResponse(String response) {
-        Log.d("log1", "register start");
-        try {
-            JSONObject object = new JSONObject(response);
-            if (object.getBoolean("success")) {
-                JSONObject user = object.getJSONObject("user");
-                //로컬에 정보 저장
-                SharedPreferences userPref = getActivity().getApplicationContext().getSharedPreferences("user", getContext().MODE_PRIVATE);
-                SharedPreferences.Editor editor = userPref.edit();
-                editor.putString("token", object.getString("token"));
-                editor.putString("name", user.getString("name"));
-                editor.putInt("id", user.getInt("id"));
-                editor.putString("lastname", user.getString("lastname"));
-                editor.putString("photo", user.getString("photo"));
-                editor.putBoolean("isLoggedIn", true);
-                editor.apply();
-                //성공 시
-                startActivity(new Intent(((AuthActivity) getContext()), UserInfoActivity.class));
-                ((AuthActivity) getContext()).finish();
-                Toast.makeText(getContext(), "Register Success", Toast.LENGTH_SHORT).show();
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Log.d("log1", "register error");
-        }
-        dialog.dismiss();
-    }
 }
