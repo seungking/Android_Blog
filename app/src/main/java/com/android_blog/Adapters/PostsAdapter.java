@@ -23,6 +23,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.android_blog.CommentActivity;
 import com.android_blog.Constant;
 import com.android_blog.EditPostActivity;
 import com.android_blog.HomeActivity;
@@ -166,17 +167,17 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
         });
 
         holder.txtComments.setOnClickListener(v->{
-//            Intent i = new Intent(((HomeActivity)context), CommentActivity.class);
-//            i.putExtra("postId",post.getId());
-//            i.putExtra("postPosition",position);
-//            context.startActivity(i);
+            Intent i = new Intent(((HomeActivity)context), CommentActivity.class);
+            i.putExtra("postId",post.getId());
+            i.putExtra("postPosition",position);
+            context.startActivity(i);
         });
 
         holder.btnComment.setOnClickListener(v->{
-//            Intent i = new Intent(((HomeActivity)context),CommentActivity.class);
-//            i.putExtra("postId",post.getId());
-//            i.putExtra("postPosition",position);
-//            context.startActivity(i);
+            Intent i = new Intent(((HomeActivity)context),CommentActivity.class);
+            i.putExtra("postId",post.getId());
+            i.putExtra("postPosition",position);
+            context.startActivity(i);
         });
 
     }
