@@ -27,6 +27,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.android_blog.Adapters.AccountPostAdapter;
+import com.android_blog.AuthActivity;
 import com.android_blog.Constant;
 import com.android_blog.HomeActivity;
 import com.android_blog.Models.Post;
@@ -171,18 +172,18 @@ public class AccountFragment extends Fragment {
     private void logout(){
         StringRequest request = new StringRequest(Request.Method.GET,Constant.LOGOUT, res->{
 
-//            try {
-//                JSONObject object = new JSONObject(res);
-//                if (object.getBoolean("success")){
-//                    SharedPreferences.Editor editor = preferences.edit();
-//                    editor.clear();
-//                    editor.apply();
-//                    startActivity(new Intent(((HomeActivity)getContext()), AuthActivity.class));
-//                    ((HomeActivity)getContext()).finish();
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                JSONObject object = new JSONObject(res);
+                if (object.getBoolean("success")){
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.clear();
+                    editor.apply();
+                    startActivity(new Intent(((HomeActivity)getContext()), AuthActivity.class));
+                    ((HomeActivity)getContext()).finish();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
 
         },error -> {

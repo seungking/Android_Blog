@@ -29,9 +29,8 @@ public class AccountPostAdapter extends RecyclerView.Adapter<AccountPostAdapter.
     @NonNull
     @Override
     public AccountPostHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_account_post,parent,false);
-//        return new AccountPostHolder(v);
-        return null;
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_account_post,parent,false);
+        return new AccountPostHolder(v);
     }
 
     @Override
@@ -51,7 +50,7 @@ public class AccountPostAdapter extends RecyclerView.Adapter<AccountPostAdapter.
 
         public AccountPostHolder(@NonNull View itemView) {
             super(itemView);
-//            imageView = itemView.findViewById(R.id.imgAccountPost);
+            imageView = itemView.findViewById(R.id.imgAccountPost);
         }
     }
 }
