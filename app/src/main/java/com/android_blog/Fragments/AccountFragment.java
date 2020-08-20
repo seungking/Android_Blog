@@ -29,6 +29,7 @@ import com.android.volley.toolbox.Volley;
 import com.android_blog.Adapters.AccountPostAdapter;
 import com.android_blog.AuthActivity;
 import com.android_blog.Constant;
+import com.android_blog.EditUserInfoActivity;
 import com.android_blog.HomeActivity;
 import com.android_blog.Models.Post;
 import com.android_blog.R;
@@ -82,11 +83,11 @@ public class AccountFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
 
 
-//        btnEditAccount.setOnClickListener(v->{
-//            Intent i = new Intent(((HomeActivity)getContext()), EditUserInfoActivity.class);
-//            i.putExtra("imgUrl",imgUrl);
-//            startActivity(i);
-//        });
+        btnEditAccount.setOnClickListener(v->{
+            Intent i = new Intent(((HomeActivity)getContext()), EditUserInfoActivity.class);
+            i.putExtra("imgUrl",imgUrl);
+            startActivity(i);
+        });
     }
 
     private void getData() {
