@@ -3,6 +3,7 @@ package com.android_blog.Fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -50,7 +51,6 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment(){}
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,7 +83,7 @@ public class HomeFragment extends Fragment {
         arrayList = new ArrayList<>();
         refreshLayout.setRefreshing(true);
 
-        StringRequest request = new StringRequest(Request.Method.GET, Constant.POSTS, response -> {
+        StringRequest request = new StringRequest(Request.Method.GET, Constant.POSTS,response -> {
 
             try {
                 JSONObject object = new JSONObject(response);

@@ -4,31 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/main_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Android Blog"
+        android:text="Android_Blog"
         android:textSize="32sp"
         android:gravity="center_horizontal"
         android:layout_centerInParent="true"
         android:fontFamily="@font/leckerlione_regular"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Laravel REST API"
-        android:textSize="32sp"
-        android:layout_below="@+id/main_text"
-        android:layout_alignStart="@+id/main_text"
-        android:layout_alignEnd="@+id/main_text"
-        android:gravity="center"
-       />
 
 </RelativeLayout>

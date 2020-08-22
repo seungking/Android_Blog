@@ -26,6 +26,7 @@
             android:id="@+id/btnLeft"/>
 
 
+
         <LinearLayout
             android:id="@+id/dotsLayout"
             android:layout_width="wrap_content"

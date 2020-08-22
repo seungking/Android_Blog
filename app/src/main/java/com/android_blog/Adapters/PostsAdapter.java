@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -202,11 +203,12 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.PostsHolder>
                             listAll.addAll(list);
                         }
                     } catch (JSONException e) {
+                        Log.d("log1", "Err");
                         e.printStackTrace();
                     }
 
                 },error -> {
-
+                    Log.d("log1", "Err");
                 }){
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {

@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Blog App"
+        android:text="Android_Blog"
         android:textSize="32sp"
         android:fontFamily="@font/leckerlione_regular"
         android:textColor="@color/colorGrey"
